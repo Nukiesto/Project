@@ -21,13 +21,8 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 8.0.x  # или 7.0.x, если используешь .NET 7
-      - name: List repository files
-        run: |
-          echo "Current working directory:"
-          pwd
-          echo "Listing repository contents:"
-          ls -R
+          dotnet-version: 8.0.x 
+          
       # 3️ Восстанавливаем зависимости
       - name: Restore dependencies
         run: dotnet restore ./TestWorkFlow/TestWorkFlow.csproj
