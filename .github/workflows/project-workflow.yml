@@ -9,33 +9,33 @@ on:
 
 jobs:
   run-dotnet-tests:
-    name: Run NUnit Tests (No Unity)
+    name: Unit Tests
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ Клонируем репозиторий
+      # 1️ Клонируем репозиторий
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 2️⃣ Устанавливаем .NET SDK
+      # 2️ Устанавливаем .NET SDK
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 8.0.x  # или 7.0.x, если используешь .NET 7
 
-      # 3️⃣ Восстанавливаем зависимости
+      # 3️ Восстанавливаем зависимости
       - name: Restore dependencies
         run: dotnet restore Project/TestWorkFlow/TestWorkFlow.csproj
 
-      # 4️⃣ Компилируем проект
+      # 4️ Компилируем проект
       - name: Build project
         run: dotnet build Project/TestWorkFlow/TestWorkFlow.csproj --configuration Release --no-restore
 
-      # 5️⃣ Запускаем тесты
+      # 5️ Запускаем тесты
       - name: Run tests
         run: dotnet test Project/TestWorkFlow/TestWorkFlow.csproj --configuration Release --no-build --logger "trx;LogFileName=test_results.trx"
 
-      # 6️⃣ Загружаем отчёт о тестах
+      # 6️ Загружаем отчёт о тестах
       - name: Upload test results
         if: always()
         uses: actions/upload-artifact@v4
