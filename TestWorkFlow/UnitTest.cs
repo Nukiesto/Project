@@ -5,13 +5,13 @@ namespace TestWorkFlow
     public class Test
     {
         [Test]
-        public void Addition_Works()
+        public void Addition()
         {
-            Assert.AreEqual(4, 2 + 2);
+            Assert.AreEqual(4, 2 + 3);
         }
 
         [Test]
-        public void Subtraction_Works()
+        public void Subtraction()
         {
             Assert.AreEqual(0, 2 - 2);
         }
