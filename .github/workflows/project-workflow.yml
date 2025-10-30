@@ -30,15 +30,15 @@ jobs:
           ls -R
       # 3️ Восстанавливаем зависимости
       - name: Restore dependencies
-        run: dotnet restore Project/TestWorkFlow/TestWorkFlow.csproj
+        run: dotnet restore ./TestWorkFlow/TestWorkFlow.csproj
 
       # 4️ Компилируем проект
       - name: Build project
-        run: dotnet build Project/TestWorkFlow/TestWorkFlow.csproj --configuration Release --no-restore
+        run: dotnet build ./TestWorkFlow/TestWorkFlow.csproj --configuration Release --no-restore
 
       # 5️ Запускаем тесты
       - name: Run tests
-        run: dotnet test Project/TestWorkFlow/TestWorkFlow.csproj --configuration Release --no-build --logger "trx;LogFileName=test_results.trx"
+        run: dotnet test ./TestWorkFlow/TestWorkFlow.csproj --configuration Release --no-build --logger "trx;LogFileName=test_results.trx"
 
       # 6️ Загружаем отчёт о тестах
       - name: Upload test results
@@ -46,4 +46,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: test-results
-          path: Project/TestWorkFlow/TestResults/
+          path: ./TestWorkFlow/TestResults/
