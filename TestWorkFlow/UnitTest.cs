@@ -7,7 +7,7 @@ namespace TestWorkFlow
         [Test]
         public void Addition()
         {
-            Assert.AreEqual(4, 2 + 3);
+            Assert.AreEqual(4, 2 + 2);
         }
 
         [Test]
